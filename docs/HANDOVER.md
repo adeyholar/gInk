@@ -1,6 +1,6 @@
 # gInk / ppInk handover
 
-Status: **blocked before feature work**. Option B was approved for baseline compatibility validation only. That gate is not passed. No product code has been changed.
+Status: **documentation revision ready for Derek review**. Option B baseline compatibility is **not passed**. No product code. Do not merge. Do not deploy.
 
 Date: 2026-11-07
 Owner: Chairman
@@ -16,14 +16,13 @@ Approach: Option B (ppInk as the base). Not started.
 | Base | `master` @ `78aa853bcdc274745a42b776ca3ee22b80179f02` |
 | Findings commit | `41069625ebef26691db5677890ecb5cf0725e9fc` |
 | SHA-record commit | `a30c3292b558c896db32ed83f06bd7f6d91d923f` |
-| Pull request | None open for this branch at the 2026-11-07 check. `master` is untouched. |
+| Prior tip | `ecaa37c9d2fbe75482304242cf7ef0bf6c5dc694` |
+| Review head | the commit that adds this Derek-review section; the PR comment names that SHA |
 | Product code | unchanged |
 
-Read the file on the branch tip. This note's own commit is the child of `a30c3292` and is the current tip after it lands.
+Direct file: https://github.com/adeyholar/gInk/blob/docs/baseline-compat-gate/docs/HANDOVER.md
 
 `adeyholar/gInk` matches upstream gInk at the base commit. It is not a ppInk fork. Option B still needs a separate fork of https://github.com/pubpub-zz/ppInk before any ppInk work. That fork was not created.
-
-Direct file (no merge required): https://github.com/adeyholar/gInk/blob/docs/baseline-compat-gate/docs/HANDOVER.md
 
 ## Decision
 
@@ -31,7 +30,16 @@ Direct file (no merge required): https://github.com/adeyholar/gInk/blob/docs/bas
 - Do not roll back `Microsoft.Ink.dll`, do not enable legacy CAS (`NetFx40_LegacySecurityPolicy`), and do not change system files.
 - If compatibility fails, stop and report alternatives. Do not implement features.
 - Upstream MIT notices stay in place. `license.txt` was not modified.
-- The Chairman merges every PR. This change is docs only.
+- The Chairman merges every PR. This revision is docs only and is **not** approved to merge by this note.
+- Do not deploy. There is no installer, signing, or release in this revision.
+
+## Derek review
+
+This documentation revision is ready for Derek to review. It is not a compatibility pass and not a merge request.
+
+- Marker: READY FOR DEREK REVIEW
+- Scope: `docs/HANDOVER.md` only
+- The PR comment carries the same marker, the head commit SHA, and the test results below
 
 ## Findings
 
@@ -55,12 +63,15 @@ gInk targets .NET Framework 3.5. The 24H2 `Microsoft.Ink.dll` was rebuilt for a 
 | Read `adeyholar/gInk` tree | Pass as a fact check. Tip of `master` is upstream `78aa853`. No product commits. |
 | Read ppInk readme (master) | Pass as a fact check. Admin DLL-rollback notice is still present. |
 | Read Microsoft KB5067036 notes | Pass as a fact check. Ink.dll fix text and builds 26100.7019 / 26200.7019 confirmed. |
-| List open PRs for `docs/baseline-compat-gate` | **None.** Checked 2026-11-07. |
+| List open PRs for `docs/baseline-compat-gate` | **None** at the check before this review section (2026-11-07). |
+| Diff scope | Docs only. No source, project, or license edits. |
 | `winver` on the Chairman's PC | **Not run.** OS version and build are unknown. |
 | Launch official ppInk v1.9.100 | **Not run.** |
 | Draw one stroke | **Not run.** |
 | Acceptance row 8 (24H2+ startup, no SecurityException, no DLL rollback) | **Not run. Not passed.** |
 | Build ppInk or gInk | **Not run.** This environment is Linux and has no `Microsoft.Ink`. |
+| Merge | **Not done.** |
+| Deploy / release / installer | **Not done.** |
 
 No DLL was replaced. No security policy was weakened. No installer was run.
 
@@ -70,7 +81,7 @@ No DLL was replaced. No security policy was weakened. No installer was run.
 2. ppInk was not executed on that PC.
 3. ppInk cannot be executed in the Linux review environment.
 4. There is no `adeyholar` fork of ppInk yet. This gInk fork is the wrong tree for Option B code.
-5. No pull request is open. The handover is readable on the branch. `master` stays unchanged until the Chairman merges.
+5. Compatibility remains blocked. Derek is reviewing the record, not clearing the gate.
 
 ## If the on-PC test fails
 
@@ -81,7 +92,9 @@ No DLL was replaced. No security policy was weakened. No installer was run.
 
 ## Next step
 
-Chairman, on the Windows PC:
+Derek reviews this documentation revision. Do not merge it and do not deploy it as part of that review.
+
+After review, the compatibility gate is still the Chairman's on-PC check:
 
 1. Run `winver`. Record Version and OS Build.
 2. Documented-fix floor: 24H2 build >= 26100.7019, or 25H2 build >= 26200.7019.
@@ -89,7 +102,7 @@ Chairman, on the Windows PC:
 4. Launch it. Do not run the `.bat`. Do not add a legacy security policy.
 5. Pass only if it opens and one stroke draws, with no `SecurityException` / `MethodAccessException`.
 
-Reply with `winver` and that launch result. On pass, the next PR is a fork of pubpub-zz/ppInk, MIT notices kept, feature branch, Chairman merges. On fail, implementation stays stopped.
+On pass, the next PR is a fork of pubpub-zz/ppInk, MIT notices kept, feature branch, Chairman merges. On fail, implementation stays stopped.
 
 ## Licensing
 
