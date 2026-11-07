@@ -15,11 +15,15 @@ Approach: Option B (ppInk as the base). Not started.
 | Branch | `docs/baseline-compat-gate` |
 | Base | `master` @ `78aa853bcdc274745a42b776ca3ee22b80179f02` |
 | Findings commit | `41069625ebef26691db5677890ecb5cf0725e9fc` |
+| SHA-record commit | `a30c3292b558c896db32ed83f06bd7f6d91d923f` |
+| Pull request | None open for this branch at the 2026-11-07 check. `master` is untouched. |
 | Product code | unchanged |
 
-The findings commit added this document. The following commit on the same branch only writes that SHA into this table. Open the branch tip for the current file.
+Read the file on the branch tip. This note's own commit is the child of `a30c3292` and is the current tip after it lands.
 
-`adeyholar/gInk` matches upstream gInk at that base commit. It is not a ppInk fork. Option B still needs a separate fork of https://github.com/pubpub-zz/ppInk before any ppInk work. That fork was not created.
+`adeyholar/gInk` matches upstream gInk at the base commit. It is not a ppInk fork. Option B still needs a separate fork of https://github.com/pubpub-zz/ppInk before any ppInk work. That fork was not created.
+
+Direct file (no merge required): https://github.com/adeyholar/gInk/blob/docs/baseline-compat-gate/docs/HANDOVER.md
 
 ## Decision
 
@@ -48,9 +52,10 @@ gInk targets .NET Framework 3.5. The 24H2 `Microsoft.Ink.dll` was rebuilt for a 
 
 | Test | Result |
 |---|---|
-| Read `adeyholar/gInk` tree | Pass as a fact check. Tip is upstream `78aa853`. No `docs/` tree before this branch. No local product commits. |
+| Read `adeyholar/gInk` tree | Pass as a fact check. Tip of `master` is upstream `78aa853`. No product commits. |
 | Read ppInk readme (master) | Pass as a fact check. Admin DLL-rollback notice is still present. |
 | Read Microsoft KB5067036 notes | Pass as a fact check. Ink.dll fix text and builds 26100.7019 / 26200.7019 confirmed. |
+| List open PRs for `docs/baseline-compat-gate` | **None.** Checked 2026-11-07. |
 | `winver` on the Chairman's PC | **Not run.** OS version and build are unknown. |
 | Launch official ppInk v1.9.100 | **Not run.** |
 | Draw one stroke | **Not run.** |
@@ -65,6 +70,7 @@ No DLL was replaced. No security policy was weakened. No installer was run.
 2. ppInk was not executed on that PC.
 3. ppInk cannot be executed in the Linux review environment.
 4. There is no `adeyholar` fork of ppInk yet. This gInk fork is the wrong tree for Option B code.
+5. No pull request is open. The handover is readable on the branch. `master` stays unchanged until the Chairman merges.
 
 ## If the on-PC test fails
 
