@@ -14,8 +14,10 @@ Approach: Option B (ppInk as the base). Not started.
 | Upstream | https://github.com/geovens/gInk |
 | Branch | `docs/baseline-compat-gate` |
 | Base | `master` @ `78aa853bcdc274745a42b776ca3ee22b80179f02` |
-| This document commit | filled in by the follow-up commit on this branch |
+| Findings commit | `41069625ebef26691db5677890ecb5cf0725e9fc` |
 | Product code | unchanged |
+
+The findings commit added this document. The following commit on the same branch only writes that SHA into this table. Open the branch tip for the current file.
 
 `adeyholar/gInk` matches upstream gInk at that base commit. It is not a ppInk fork. Option B still needs a separate fork of https://github.com/pubpub-zz/ppInk before any ppInk work. That fork was not created.
 
